@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header/>
-        <IssueListPage org="rails" repo="rails"/>
+        <IssueListPage org="facebook" repo="react"/>
         <Footer/>
       </Fragment>
     );

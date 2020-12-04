@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb} from 'react-bootstrap';
-import Octicon, { repo, info } from 'octicons-react';
 import IssueList from '../components/IssueList';
 import { getIssues, getOpenIssueCount } from '../lib/api';
 import opened from './opened.svg';
@@ -35,28 +34,27 @@ class IssueListPage extends Component {
   }
 
   render() {
-    const {org, rep} = this.props;
+    const {org, repo} = this.props;
     const {openIssues, issues, loading} = this.state;
 
     return (
-      <Fragment>
+      <>
       <Breadcrumb className ="sub-header">
-        <Octicon className="repo-icon" icon={repo} />
-        <Breadcrumb.Item href="#">React</Breadcrumb.Item>
-        <Breadcrumb.Item active href="#">Dechit</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
+        <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
       </Breadcrumb>
       <div className="box-header container">
-        <div class="m-0 p-3">
-          <span class="opened">
+        <div className="m-0 pb-3 pt-3 px-0">
+          <span className="opened">
             <img src={opened} alt="opened" />
           </span>
-          <span class="m-0">{openIssues > -1 ? openIssues : '--'} open</span>
+          <span className="m-0">{openIssues > -1 ? openIssues : '--'} open</span>
         </div>
       </div>
       <div>
       {loading ? <span>Loading...</span> : <IssueList issues={issues}/>}
       </div>
-      </Fragment>
+      </>
     );
   }
 }
