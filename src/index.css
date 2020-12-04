@@ -77,3 +77,25 @@ ul {
 li {
   list-style: none;
 } 
+
+.comment-number {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.box-header {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #F6F8FA;
+}
+
+.box-header div {
+  font-weight: 600;
+}
+
+.opened {
+  font-size:22px;
+  margin-right: 5px;
+}

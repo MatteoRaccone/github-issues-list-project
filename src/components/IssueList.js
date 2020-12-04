@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Issue from './Issue';
+import Issue from './IssueCard';
 
 export default function IssueList({ issues }) {
   return (
@@ -11,6 +11,9 @@ export default function IssueList({ issues }) {
             number={issue.number}
             title={issue.title}
             summary={issue.body}
+            user={issue.user.login}
+            created_at= {issue.created_at}
+            comments= {issue.comments}
           />
         </li>
       )}
@@ -25,6 +28,8 @@ IssueList.propTypes = {
         login: PropTypes.string
       }).isRequired,
       title: PropTypes.string,
+      created_at: PropTypes.string,
+      comments: PropTypes.number,
       body: PropTypes.string,
     }))
   };

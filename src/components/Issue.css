@@ -1,23 +1,32 @@
-.issues-container {
+.issue-container {
     border: 1px solid #F6F8FA!important;;
     border-radius: 6px;
+    text-align: left!important;
+    border-top: 1px transparent;
 }
   
-.issue__number {
+.issue-number {
 font-size: 14px;
 color: #999;
 margin-right: 0.5rem;
 }
 
-.issue__title {
+.issue-title {
 font-weight: bold;
+color: black;
+text-decoration: none!important;
 }
 
-.issue__summary {
+.issue-summary {
 margin-bottom: 2px;
 }
 
-.issue__user {
+.comment-icon {
+    margin-right: 4px;
+    opacity: 0.5;
+}
+
+.issue-user {
 text-align: center;
 margin-right: 1rem;
 display: flex;
