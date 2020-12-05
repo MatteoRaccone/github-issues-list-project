@@ -1,43 +1,48 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 .footer{
   margin-top: 1rem;
   padding: .5rem 1rem;
   background-color: white;
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  font-size: 12px;
+  font-size: 13px;
   border-top: black;
 }
 
-.header-icon {
+.footer-nav {
+  justify-content: space-between!important;
+  padding-top: 30px!important;
+  padding-bottom: 8px!important;
+}
 
+.header-icon {
+  
   width: 30px!important;
   height: 47px!important;
   color: white;
-
+  
 }
 
 .footer-icon {
-
+  
   width: 25px!important;
   height: 40px!important;
   color: lightgray;
-
+  
 }
 
 .header-nav {
@@ -56,17 +61,17 @@ code {
 .breadcrumb-item.active {
   color: #0366d6!important;
   font-weight: 600;
-
+  
 }
 
 .repo-icon {
-
+  
   width: auto;
   height: auto;
   color: black;
   margin-right: 5px;
   opacity: 0.5;
-
+  
 }
 
 ul {
@@ -98,4 +103,14 @@ li {
 .opened {
   font-size:22px;
   margin-right: 5px;
+}
+
+.form-inline .form-control {
+  background: none;
+  border: 1px solid #444d56;
+}
+
+.header-nav{
+  font-weight: 800;
+  font-size: 14px;
 }

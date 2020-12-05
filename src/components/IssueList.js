@@ -14,6 +14,7 @@ export default function IssueList({ issues }) {
             user={issue.user.login}
             created_at= {issue.created_at}
             comments= {issue.comments}
+            state= {issue.state}
           />
         </li>
       )}
@@ -27,6 +28,7 @@ IssueList.propTypes = {
       user: PropTypes.shape({
         login: PropTypes.string
       }).isRequired,
+      state: PropTypes.string,
       title: PropTypes.string,
       created_at: PropTypes.string,
       comments: PropTypes.number,

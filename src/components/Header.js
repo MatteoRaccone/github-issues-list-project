@@ -11,10 +11,10 @@ class Header extends Component {
     <Form inline>
       <FormControl type="text" placeholder="Search or jump to..." className="ml-sm-2" />
     </Form>
-      <Nav.Link href="#home">Pull requests</Nav.Link>
-      <Nav.Link href="#features">Issues</Nav.Link>
-      <Nav.Link href="#pricing">Marketplace</Nav.Link>
-      <Nav.Link href="#pricing">Explore</Nav.Link>
+      <Nav.Link href="#home" className= "header-nav">Pull requests</Nav.Link>
+      <Nav.Link href="#features" className= "header-nav">Issues</Nav.Link>
+      <Nav.Link href="#pricing" className= "header-nav">Marketplace</Nav.Link>
+      <Nav.Link href="#pricing" className= "header-nav">Explore</Nav.Link>
     </Nav>
     </Navbar>
     

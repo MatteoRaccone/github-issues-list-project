@@ -13,7 +13,7 @@ function shorten(text = "", length = 140) {
   return cleanText.substr(0, 140);
 }
 
-export default function Issue({ number, title, summary, user, created_at, comments}) {
+export default function Issue({ number, title, summary, user, created_at, comments, state}) {
   return (
     <div>
       <div className="issue-container container">
@@ -32,6 +32,7 @@ export default function Issue({ number, title, summary, user, created_at, commen
               </span>
             </div>
           </div>
+          <div className="issue-label">{state}</div>
         </div>
       </div>
     </div>
@@ -44,5 +45,6 @@ Issue.propTypes = {
   summary: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   created_at: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
   comments: PropTypes.number.isRequired
 };

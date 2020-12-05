@@ -4,21 +4,21 @@
     text-align: left!important;
     border-top: 1px transparent;
 }
-  
+
 .issue-number {
-font-size: 14px;
-color: #999;
-margin-right: 0.5rem;
+    font-size: 14px;
+    color: #999;
+    margin-right: 0.5rem;
 }
 
 .issue-title {
-font-weight: bold;
-color: black;
-text-decoration: none!important;
+    font-weight: bold;
+    color: black;
+    text-decoration: none!important;
 }
 
 .issue-summary {
-margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .comment-icon {
@@ -27,13 +27,90 @@ margin-bottom: 2px;
 }
 
 .issue-user {
-text-align: center;
-margin-right: 1rem;
-display: flex;
-flex-direction: column;
-justify-content: center;
+    text-align: center;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .repo-icon {
-    background: url('https://api.iconify.design/octicon:repo-16.svg') no-repeat center center / contain;
+    width: 18px;
+    margin-right: 3px;
+    opacity: 0.7;
+}
+
+.issue-label {
+    box-shadow: rgb(215, 225, 2) 0px 0px 2px;
+    border-color: rgb(215, 225, 2);
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 1px 5px;
+    margin: 0 0.5rem 0.5rem 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+#issue-list-page {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.issues-pagination {
+    padding: 1rem;
+    text-align: center;
+}
+
+.issues-pagination li {
+    display: inline-block;
+}
+.issues-pagination li > a {
+    display: inline-block;
+    min-width: 32px;
+    padding: 5px 10px;
+    font-style: normal;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: border-color .2s cubic-bezier(.3,0,.5,1);
+}
+
+.previous {
+    display: inline-block;
+    color: #0366d6;
+}
+
+.next {
+    display: inline-block;
+    color: #0366d6;
+}
+
+.issues-pagination li > a:focus {
+    outline: none;
+}
+
+.issues-pagination li > a:hover {
+    text-decoration: none;
+    border: 1px solid #e2e4e8;
+    outline: 0;
+}
+
+
+.issues-pagination .selected a {
+    color: #fff!important;
+    background-color: #0366d6;
+    border-color: transparent;
+    border-radius: 6px;
+    min-width: 32px;
+    padding: 5px 10px;
+    
 }

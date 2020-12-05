@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
+import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import { Breadcrumb} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
 import { getIssues, getOpenIssueCount } from '../lib/api';
 import opened from './opened.svg';
+import rep from './rep.png';
 
 class IssueListPage extends Component {
   constructor(props) {
@@ -13,33 +15,59 @@ class IssueListPage extends Component {
       loading: true,
       issues: [],
       openIssues: -1,
-      pages: {}
+      pageLinks: {}
     };
   }
 
   componentDidMount() {
     const {org, repo} = this.props;
-
-    getIssues(org, repo, 1).then(issueResponse => {
-      this.setState({
-        pages: issueResponse.pages,
-        issues: issueResponse.data,
-        loading: false
+    
+    // Fetch the number of open issues
+    getOpenIssueCount(org, repo)
+      .then(openIssues => {
+        this.setState({ openIssues });
+      })
+      .catch(error => {
+        this.setState({ openIssues: -1 });
       });
-    });
 
-    getOpenIssueCount(org, repo).then(openIssues => {
-      this.setState({ openIssues });
-    });
+    this.fetchIssues(1);
+  }
+
+  fetchIssues(page) {
+    const {org, repo} = this.props;
+
+    getIssues(org, repo, page)
+      .then(issueResponse => {
+        this.setState({
+          pageCount: issueResponse.pageCount,
+          pageLinks: issueResponse.pageLinks,
+          issues: issueResponse.data,
+          loading: false
+        });
+      })
+      .catch(error => {
+        this.setState({
+          pageCount: 0,
+          pageLinks: {},
+          issues: [],
+          loading: false
+        });
+      });
+  }
+
+  handlePageChange = ({ selected }) => {
+    this.fetchIssues(selected + 1);
   }
 
   render() {
     const {org, repo} = this.props;
-    const {openIssues, issues, loading} = this.state;
-
+    const {openIssues, issues, loading, pageCount} = this.state;
+    
     return (
       <>
       <Breadcrumb className ="sub-header">
+      <span><img src={rep} alt="rep" class="repo-icon"/></span>
         <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
         <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
       </Breadcrumb>
@@ -53,6 +81,14 @@ class IssueListPage extends Component {
       </div>
       <div>
       {loading ? <span>Loading...</span> : <IssueList issues={issues}/>}
+      <div className="issues-pagination">
+      <Paginate
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={this.handlePageChange} 
+      />
+      </div>
       </div>
       </>
     );
