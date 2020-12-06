@@ -20,7 +20,8 @@ class IssueListPage extends Component {
   }
 
   componentDidMount() {
-    const {org, repo} = this.props;
+    const org= 'facebook';
+    const repo = 'react';
     
     // Fetch the number of open issues
     getOpenIssueCount(org, repo)
@@ -35,7 +36,8 @@ class IssueListPage extends Component {
   }
 
   fetchIssues(page) {
-    const {org, repo} = this.props;
+    const org= 'facebook';
+    const repo = 'react';
 
     getIssues(org, repo, page)
       .then(issueResponse => {
@@ -61,43 +63,41 @@ class IssueListPage extends Component {
   }
 
   render() {
-    const {org, repo} = this.props;
+    const org= 'facebook';
+    const repo = 'react';
     const {openIssues, issues, loading, pageCount} = this.state;
     
     return (
       <>
-      <Breadcrumb className ="sub-header">
-      <span><img src={rep} alt="rep" class="repo-icon"/></span>
-        <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
-        <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
-      </Breadcrumb>
-      <div className="box-header container">
-        <div className="m-0 pb-3 pt-3 px-0">
-          <span className="opened">
-            <img src={opened} alt="opened" />
-          </span>
-          <span className="m-0">{openIssues > -1 ? openIssues : '--'} open</span>
+        <Breadcrumb className ="sub-header">
+        <span><img src={rep} alt="rep" class="repo-icon"/></span>
+          <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
+          <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
+        </Breadcrumb>
+        <div className="box-header container">
+          <div className="m-0 pb-3 pt-3 px-0">
+            <span className="opened">
+              <img src={opened} alt="opened" />
+            </span>
+            <span className="m-0">{openIssues > -1 ? openIssues : '--'} open</span>
+          </div>
         </div>
-      </div>
-      <div>
-      {loading ? <span>Loading...</span> : <IssueList issues={issues}/>}
-      <div className="issues-pagination">
-      <Paginate
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={this.handlePageChange} 
-      />
-      </div>
-      </div>
+        <div>
+        {loading ? <span>Loading...</span> : <IssueList issues={issues}/>}
+        <div className="issues-pagination">
+        <Paginate
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageChange} 
+        />
+        </div>
+        </div>
       </>
     );
   }
 }
 
-IssueListPage.propTypes = {
-  org: PropTypes.string.isRequired,
-  repo: PropTypes.string.isRequired
-};
+
 
 export default IssueListPage;
