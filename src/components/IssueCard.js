@@ -32,11 +32,11 @@ export default function Issue({ number, title, summary, user, created_at, commen
               </span>
             </div>
           </div>
-          <div className="issue-label">
+          <div className="issue-labels">
             {labels.map(label =>
               <span
                 key={label.id}
-                className="issue__label"
+                className="issue-label"
                 style={{borderColor: `#${label.color}`}}>
                 {label.name}
               </span>
