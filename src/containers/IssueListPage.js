@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import ReactSpinner from 'react-bootstrap-spinner';
 import { connect } from 'react-redux';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
@@ -54,7 +55,7 @@ export class IssueListPage extends Component {
           </div>
         </div>
         <div>
-        {isLoading ? <span>Loading...</span> : <IssueList issues={issues}/>}
+        {isLoading ? <ReactSpinner type="border" color="primary" size="5"/> : <IssueList issues={issues}/>}
         <div className="issues-pagination">
         <Paginate
           pageCount={pageCount}
