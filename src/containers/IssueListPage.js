@@ -70,7 +70,7 @@ class IssueListPage extends Component {
     return (
       <>
         <Breadcrumb className ="sub-header">
-        <span><img src={rep} alt="rep" class="repo-icon"/></span>
+        <span><img src={rep} alt="rep" className="repo-icon"/></span>
           <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
           <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
         </Breadcrumb>

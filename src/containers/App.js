@@ -2,8 +2,10 @@ import React, { Component, Fragment } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import IssueListPage from '../containers/IssueListPage';
-import { Switch, Route, Redirect, withRouter, BrowserRouter  } from 'react-router-dom';
+import IssueDetails from '../containers/IssueDetailPage';
+import { Switch, Route, BrowserRouter  } from 'react-router-dom';
 import './App.css';
+
 
 class App extends Component {
   render() {
@@ -12,8 +14,9 @@ class App extends Component {
         <Header/>
         <BrowserRouter>
           <Switch>
-              <Route path="/issue-details" component={IssueListPage} />
-              <Redirect to="/home" />
+            <Route exact path="/" component={IssueListPage} />
+            <Route path="/:issueId" component={IssueDetails} />
+            <Route path="*" component={IssueListPage} />
           </Switch>
         </BrowserRouter>
         <Footer/>

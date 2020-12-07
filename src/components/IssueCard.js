@@ -13,7 +13,7 @@ function shorten(text = "", length = 140) {
   return cleanText.substr(0, 140);
 }
 
-export default function Issue({ number, title, summary, user, created_at, comments, state}) {
+export default function Issue({ number, title, summary, user, created_at, comments, state, labels}) {
   return (
     <div>
       <div className="issue-container container">
@@ -32,7 +32,16 @@ export default function Issue({ number, title, summary, user, created_at, commen
               </span>
             </div>
           </div>
-          <div className="issue-label">{state}</div>
+          <div className="issue-label">
+            {labels.map(label =>
+              <span
+                key={label.id}
+                className="issue__label"
+                style={{borderColor: `#${label.color}`}}>
+                {label.name}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -40,11 +49,18 @@ export default function Issue({ number, title, summary, user, created_at, commen
 }
 
 Issue.propTypes = {
-  number: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  comments: PropTypes.number.isRequired
+  issues: PropTypes.arrayOf(PropTypes.shape({
+    number: PropTypes.number.isRequired,
+    user: PropTypes.shape({
+      login: PropTypes.string
+    }).isRequired,
+    state: PropTypes.string,
+    title: PropTypes.string,
+    created_at: PropTypes.string,
+    comments: PropTypes.number,
+    body: PropTypes.string,
+    labels: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number
+    }))
+  }))
 };

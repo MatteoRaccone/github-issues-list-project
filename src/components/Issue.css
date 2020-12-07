@@ -114,3 +114,18 @@
     padding: 5px 10px;
     
 }
+
+.issues-list:hover {
+    cursor: pointer;
+  } 
+
+.issue-link {
+    color: unset;
+    text-decoration: none;
+}
+
+.issue-link:hover{
+    color: unset;
+    text-decoration: none;
+}
+
