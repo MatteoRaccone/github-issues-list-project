@@ -21,9 +21,7 @@ export class IssueListPage extends Component {
   }
 
   componentDidMount() {
-    const org= 'facebook';
-    const repo = 'react';
-    const {getIssues, getRepoDetails} = this.props;
+    const {getIssues, getRepoDetails, org, repo} = this.props;
     
     getRepoDetails(org, repo);
     getIssues(org, repo, 1);
@@ -35,9 +33,7 @@ export class IssueListPage extends Component {
   }
 
   render() {
-    const org= 'facebook';
-    const repo = 'react';
-    const {isLoading, issues, pageCount, openIssuesCount} = this.props;
+    const {org, repo, isLoading, issues, pageCount, openIssuesCount} = this.props;
     
     return (
       <>

@@ -137,16 +137,4 @@
     border-radius: 5px;
     border: 2px solid #ccc;
     background-color: #fff;
-  }
-
-  .loading {
-    position: fixed;
-    top: 0; right: 0;
-    bottom: 0; left: 0;
-    background: #fff;
-}
-.loader {
-    left: 50%;
-    margin-left: -4em;
-    font-size: 10px;
 }
