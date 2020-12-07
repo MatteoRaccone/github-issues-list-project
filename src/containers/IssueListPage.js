@@ -1,20 +1,20 @@
 import React, { Component} from 'react';
+import { connect } from 'react-redux';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import { Breadcrumb} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
-import { getIssues, getOpenIssueCount } from '../lib/api';
+import { getIssues, getRepoDetails } from '../redux/actions';
 import opened from './opened.svg';
 import rep from './rep.png';
 
-class IssueListPage extends Component {
+export class IssueListPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: true,
       issues: [],
-      openIssues: -1,
       pageLinks: {}
     };
   }
@@ -22,50 +22,21 @@ class IssueListPage extends Component {
   componentDidMount() {
     const org= 'facebook';
     const repo = 'react';
+    const {getIssues, getRepoDetails} = this.props;
     
-    // Fetch the number of open issues
-    getOpenIssueCount(org, repo)
-      .then(openIssues => {
-        this.setState({ openIssues });
-      })
-      .catch(error => {
-        this.setState({ openIssues: -1 });
-      });
-
-    this.fetchIssues(1);
+    getRepoDetails(org, repo);
+    getIssues(org, repo, 1);
   }
-
-  fetchIssues(page) {
-    const org= 'facebook';
-    const repo = 'react';
-
-    getIssues(org, repo, page)
-      .then(issueResponse => {
-        this.setState({
-          pageCount: issueResponse.pageCount,
-          pageLinks: issueResponse.pageLinks,
-          issues: issueResponse.data,
-          loading: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          pageCount: 0,
-          pageLinks: {},
-          issues: [],
-          loading: false
-        });
-      });
-  }
-
   handlePageChange = ({ selected }) => {
-    this.fetchIssues(selected + 1);
+    const {getIssues, org, repo} = this.props;
+
+    getIssues(org, repo, selected + 1);
   }
 
   render() {
     const org= 'facebook';
     const repo = 'react';
-    const {openIssues, issues, loading, pageCount} = this.state;
+    const {isLoading, issues, pageCount, openIssuesCount} = this.props;
     
     return (
       <>
@@ -79,11 +50,11 @@ class IssueListPage extends Component {
             <span className="opened">
               <img src={opened} alt="opened" />
             </span>
-            <span className="m-0">{openIssues > -1 ? openIssues : '--'} open</span>
+            <span className="m-0">{openIssuesCount > -1 ? openIssuesCount : '--'} open</span>
           </div>
         </div>
         <div>
-        {loading ? <span>Loading...</span> : <IssueList issues={issues}/>}
+        {isLoading ? <span>Loading...</span> : <IssueList issues={issues}/>}
         <div className="issues-pagination">
         <Paginate
           pageCount={pageCount}
@@ -98,6 +69,25 @@ class IssueListPage extends Component {
   }
 }
 
+IssueListPage.propTypes = {
+  org: PropTypes.string.isRequired,
+  repo: PropTypes.string.isRequired,
+  issues: PropTypes.array.isRequired,
+  openIssuesCount: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
 
+IssueListPage.defaultProps = {
+  org: "facebook",
+  repo: "react"
+};
 
-export default IssueListPage;
+const mapStateToProps = ({ issues, repo }) => ({
+  issues: issues.issues,
+  openIssuesCount: repo.openIssuesCount,
+  isLoading: issues.isLoading,
+});
+
+const mapDispatch = { getIssues, getRepoDetails };
+
+export default connect(mapStateToProps, mapDispatch)(IssueListPage);

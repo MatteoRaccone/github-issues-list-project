@@ -4,7 +4,6 @@ class IssueDetails extends Component {
   render() {
     return (
       <div>
-        
       </div>
     );
   }

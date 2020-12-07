@@ -1,26 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import IssueListPage from '../containers/IssueListPage';
-import IssueDetails from '../containers/IssueDetailPage';
-import { Switch, Route, BrowserRouter  } from 'react-router-dom';
+import React, { Component } from 'react';
 import './App.css';
-
+import '../index.css';
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Header/>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={IssueListPage} />
-            <Route path="/:issueId" component={IssueDetails} />
-            <Route path="*" component={IssueListPage} />
-          </Switch>
-        </BrowserRouter>
-        <Footer/>
-      </Fragment>
+      <div className="App">
+        {this.props.children}
+      </div>
     );
   }
 }
