@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Form, FormControl} from 'react-bootstrap';
-import Octicon, { markGithub } from 'octicons-react'
+import Octicon, { markGithub } from 'octicons-react';
 
 class Header extends Component {
   render() {

@@ -37,6 +37,21 @@ code {
   
 }
 
+.sub-header-icon {
+  
+  width: 17px!important;
+  height: 31px!important;
+  color: #22863a;
+  
+}
+
+.issue-icon {
+  
+  width: 17px!important;
+  height: 17px!important;
+  color: #22863a;
+}
+
 .footer-icon {
   
   width: 25px!important;
@@ -113,4 +128,8 @@ li {
 .header-nav{
   font-weight: 800;
   font-size: 14px;
+}
+
+.issue-summary-header .author {
+  font-weight: 600;
 }

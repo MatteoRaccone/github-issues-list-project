@@ -19,7 +19,7 @@ let store = createStore(rootReducer, applyMiddleware(thunk));
 const routes = (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={App}/>
+      <Route exact path="/issue" component={App}/>
       <Route path="/issue/:issueId" component={IssueDetails} />
       <Route path="*" component={IssueListPage} />
     </Switch>

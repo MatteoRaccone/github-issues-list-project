@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Issue.css';
-import Octicon, { comment } from 'octicons-react';
-import opened from '../containers/opened.svg';
+import Octicon, { comment, issueOpened  } from 'octicons-react';
+import IssueLabels from '../components/IssueLabels'
 
 function shorten(text = "", length = 140) {
   let cleanText = text.replace(/\\r\\n/g, "\\n");
@@ -20,7 +20,7 @@ export default function Issue({ number, title, summary, user, created_at, commen
         <div className="p-3">
           <div className="d-flex row position-relative">
             <div className=" px-0 col-9">
-              <span className="opened"><img src={opened} alt="opened" /></span>
+              <Octicon className="issue-icon mr-1" icon={issueOpened} />
               <a href="#" className="issue-title">{title}</a>
               <div className="issue-summary">{shorten(summary)}</div>
               <div className="issue-number">#{number}  created by {user} the {created_at}</div>
@@ -32,16 +32,7 @@ export default function Issue({ number, title, summary, user, created_at, commen
               </span>
             </div>
           </div>
-          <div className="issue-labels">
-            {labels.map(label =>
-              <span
-                key={label.id}
-                className="issue-label"
-                style={{borderColor: `#${label.color}`}}>
-                {label.name}
-              </span>
-            )}
-          </div>
+          <IssueLabels labels={labels}/>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Breadcrumb} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
 import { getIssues, getRepoDetails } from '../redux/actions';
-import opened from './opened.svg';
+import Octicon, { issueOpened } from 'octicons-react';
 import rep from './rep.png';
 
 export class IssueListPage extends Component {
@@ -45,7 +45,7 @@ export class IssueListPage extends Component {
         <div className="box-header container">
           <div className="m-0 pb-3 pt-3 px-0">
             <span className="opened">
-              <img src={opened} alt="opened" />
+              <Octicon className="sub-header-icon" icon={issueOpened} />
             </span>
             <span className="m-0">{openIssuesCount > -1 ? openIssuesCount : '--'} open</span>
           </div>
@@ -79,8 +79,11 @@ IssueListPage.defaultProps = {
   repo: "react"
 };
 
+const selectIssues = issues => 
+  issues.currentPageIssues.map(number => issues.issuesByNumber[number]);
+
 const mapStateToProps = ({ issues, repo }) => ({
-  issues: issues.issues,
+  issues: selectIssues(issues),
   openIssuesCount: repo.openIssuesCount,
   isLoading: issues.isLoading,
 });

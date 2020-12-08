@@ -48,3 +48,10 @@ export function getRepoDetails(org, repo) {
       return Promise.reject(-1);
     });
 }
+
+export function getIssue(org, repo, number) {
+  const url = `https://api.github.com/repos/${org}/${repo}/issues/${number}`;
+  return axios.get(url)
+    .then(res => res.data)
+    .catch(err => Promise.reject({}));
+}
