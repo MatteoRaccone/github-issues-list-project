@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { Breadcrumb } from 'react-bootstrap';
 import Octicon, { issueOpened } from 'octicons-react';
 import rep from './rep.png';
+import './Comment.css';
 import UserWithAvatar from '../components/UserWithAvatar';
+import IssueLabels from '../components/IssueLabels'
 
 function Comment({ comment }) {
   return (
@@ -15,7 +17,14 @@ function Comment({ comment }) {
       </div>
       <div className="col-12 col-md-11 mb-4 mb-md-0">
         <div className="issue-summary-header container">
-          <span className="author">{comment.user.login}</span>
+          <div class="row">
+            <span className="author col-9">{comment.user.login}
+            <span className="ml-2 date-comment">commented on {comment.created_at}</span>
+            </span>
+            <span>{comment.author_association === 'NONE'
+            ? <div></div>
+            : <span className="association text-lowercase">{comment.author_association}</span>}</span>
+          </div>
         </div>
         <div className="issue-detail-summary container">
           <span>{comment.body}</span>
@@ -66,7 +75,7 @@ class IssueDetails extends Component {
   
 
   renderContent() {
-    const {issue, comments} = this.props;
+    const {issue, comments, labels} = this.props;
 
     return (
       <>
@@ -89,6 +98,7 @@ class IssueDetails extends Component {
           <div className="col-12 col-md-9 mb-4 mb-md-0">
             <div className="issue-summary-header container">
               <span className="author">{issue.user.login}</span>
+              <span className="ml-2 date-comment">commented on {issue.created_at}</span>
             </div>
             <div className="issue-detail-summary container">
               {issue.body}
@@ -100,23 +110,24 @@ class IssueDetails extends Component {
           </div>
           <div className="col-3">
             <div className="issue-right-panel">
-              <span>Assignees</span>
+              <p>Assignees</p>
               <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
-              <span>Labels</span>
+              <p>Labels</p>
+              <IssueLabels labels={issue.labels}/>
               <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
-              <span>Projects</span>
+              <p>Projects</p>
               <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
-              <span>Milestone</span>
+              <p>Milestone</p>
               <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
-              <span>Linked pull requests</span>
+              <p>Linked pull requests</p>
               <hr className="divider-short"/>
             </div>
           </div>
@@ -153,6 +164,11 @@ IssueDetails.propTypes = {
       issueId: PropTypes.string.isRequired
     })
   }),
+  labels: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    color: PropTypes.string
+  })).isRequired
 }
 
 const mapState = ({ issues, issueComments }, ownProps) => {

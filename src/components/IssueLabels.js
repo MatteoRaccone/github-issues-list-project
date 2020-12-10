@@ -7,7 +7,7 @@ const IssueLabels = ({ labels }) => (
       <span
         key={label.id}
         className="issue-label"
-        style={{borderColor: `#${label.color}`}}>
+        style={{backgroundColor: `#${label.color}`}}>
         {label.name}
       </span>
     )}

@@ -41,15 +41,15 @@
 }
 
 .issue-label {
-    box-shadow: rgb(215, 225, 2) 0px 0px 2px;
-    border-color: rgb(215, 225, 2);
     display: inline-block;
+    font-weight: bold;
+    color: white;
+    mix-blend-mode: difference;
     font-size: 0.75rem;
     padding: 1px 5px;
     margin: 0 0.5rem 0.5rem 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+    border-radius: 20px;
+    
 }
 
 #issue-list-page {
@@ -238,6 +238,6 @@
 
 }
 
-.issue-right-panel span {
+.issue-right-panel p  {
     font-weight: bold;
 }

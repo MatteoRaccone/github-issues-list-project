@@ -1,0 +1,16 @@
+.association {
+    display: inline-block;
+    padding: 0 7px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    border-radius: 2em;
+    border: 1px solid transparent;
+    border-color: #e1e4e8;
+}
+
+.date-comment {
+    font-weight: 500;
+    font-size: 12px;
+    color: #586069;
+}
