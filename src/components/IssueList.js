@@ -30,7 +30,8 @@ IssueList.propTypes = {
     issues: PropTypes.arrayOf(PropTypes.shape({
       number: PropTypes.number.isRequired,
       user: PropTypes.shape({
-        login: PropTypes.string
+        login: PropTypes.string,
+        avatar_url: PropTypes.string
       }).isRequired,
       state: PropTypes.string,
       title: PropTypes.string,

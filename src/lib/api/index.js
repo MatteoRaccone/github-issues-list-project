@@ -55,3 +55,9 @@ export function getIssue(org, repo, number) {
     .then(res => res.data)
     .catch(err => Promise.reject({}));
 }
+
+export function getComments(url) {
+  return axios.get(url)
+    .then(res => res.data)
+    .catch(err => Promise.reject({}));
+}

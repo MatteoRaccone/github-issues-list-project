@@ -230,3 +230,14 @@
     border-top-right-radius: 6px;
     border-bottom: none;
 }
+
+.issue-right-panel {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #586069;
+
+}
+
+.issue-right-panel span {
+    font-weight: bold;
+}

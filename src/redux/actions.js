@@ -1,4 +1,7 @@
 import * as API from '../lib/api/index';
+export const GET_COMMENTS_BEGIN = 'GET_COMMENTS_BEGIN';
+export const GET_COMMENTS_SUCCESS = 'GET_COMMENTS_SUCCESS';
+export const GET_COMMENTS_FAILURE = 'GET_COMMENTS_FAILURE';
 export const GET_ISSUE_BEGIN = 'GET_ISSUE_BEGIN';
 export const GET_ISSUE_SUCCESS = 'GET_ISSUE_SUCCESS';
 export const GET_ISSUE_FAILURE = 'GET_ISSUE_FAILURE';
@@ -80,5 +83,35 @@ export function getIssue(org, repo, number) {
     API.getIssue(org, repo, number)
       .then(res => dispatch(getIssueSuccess(res)))
       .catch(error => dispatch(getIssueFailure(error)));
+  };
+}
+
+export function getCommentsSuccess(issueNumber, comments) {
+  return {
+    type: GET_COMMENTS_SUCCESS,
+    payload: {
+      comments,
+      issueNumber
+    }
+  };
+}
+
+export function getCommentsFailure(error) {
+  return {
+    type: GET_COMMENTS_FAILURE,
+    error
+  };
+}
+
+export function getComments(issue) {
+  return dispatch => {
+    if(!issue || !issue.comments) {
+      return;
+    }
+
+    dispatch({type: GET_COMMENTS_BEGIN});
+    API.getComments(issue.comments_url)
+      .then(comments => dispatch(getCommentsSuccess(issue.number, comments)))
+      .catch(error => dispatch(getCommentsFailure(error)));
   };
 }
