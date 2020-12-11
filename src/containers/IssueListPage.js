@@ -7,6 +7,7 @@ import { Breadcrumb} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
 import { getIssues, getRepoDetails } from '../redux/actions';
 import Octicon, { issueOpened } from 'octicons-react';
+import ReactMarkdown from 'react-markdown';
 import rep from './rep.png';
 
 export class IssueListPage extends Component {

@@ -7,7 +7,8 @@ import Octicon, { issueOpened } from 'octicons-react';
 import rep from './rep.png';
 import './Comment.css';
 import UserWithAvatar from '../components/UserWithAvatar';
-import IssueLabels from '../components/IssueLabels'
+import IssueLabels from '../components/IssueLabels';
+import ReactMarkdown from 'react-markdown';
 
 function Comment({ comment }) {
   return (
@@ -27,7 +28,7 @@ function Comment({ comment }) {
           </div>
         </div>
         <div className="issue-detail-summary container">
-          <span>{comment.body}</span>
+          <ReactMarkdown className="markdown" source={comment.body}/>
         </div>
         <hr className="divider-short"/>
       </div>
@@ -59,6 +60,10 @@ const IssueNumber = ({ issue }) => (
     #{issue.number}
   </span>
 );
+
+export function insertMentionLinks(markdown) {
+  return markdown.replace(/\B(@([a-zA-Z0-9](-?[a-zA-Z0-9_])+))/g, `[$1](https://github.com/$2)`);
+}
 
 class IssueDetails extends Component {
   componentDidMount() {
@@ -100,7 +105,7 @@ class IssueDetails extends Component {
               <span className="ml-2 date-comment">commented on {issue.created_at}</span>
             </div>
             <div className="issue-detail-summary container">
-              {issue.body}
+              <ReactMarkdown className="markdown" source={issue.body}/>
             </div>
             <hr className="divider-short"/>
             {issue.comments === 0

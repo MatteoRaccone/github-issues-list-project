@@ -247,3 +247,16 @@
     border-bottom: 1px solid #eaecef;
     padding-bottom: 15px;
 }
+
+.markdown pre {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 2px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+  }
+  .markdown p > code {
+    padding: 3px 5px;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+  }
