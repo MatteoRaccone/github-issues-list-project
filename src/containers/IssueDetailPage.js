@@ -4,11 +4,12 @@ import { getIssue, getComments } from '../redux/actions';
 import { connect } from 'react-redux';
 import { Breadcrumb } from 'react-bootstrap';
 import Octicon, { issueOpened } from 'octicons-react';
-import rep from './rep.png';
+import rep from '../images/rep.png';
 import './Comment.css';
 import UserWithAvatar from '../components/UserWithAvatar';
 import IssueLabels from '../components/IssueLabels';
 import ReactMarkdown from 'react-markdown';
+import ReactSpinner from 'react-bootstrap-spinner';
 
 function Comment({ comment }) {
   return (
@@ -151,7 +152,9 @@ class IssueDetails extends Component {
     return (
       <div>
         {issue && this.renderContent()}
-        {!issue && this.renderLoading()}
+        {!issue && <div className= "justify-content-center d-flex mt-3">
+            <ReactSpinner type="border" color="primary" size="5"/>
+          </div>}
       </div>
     );
   }
@@ -163,6 +166,8 @@ IssueDetails.propTypes = {
       issueId: PropTypes.string.isRequired
     })
   }),
+  issue: PropTypes.object,
+  comments: PropTypes.array,
   labels: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
