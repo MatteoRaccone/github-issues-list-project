@@ -40,19 +40,17 @@ export default function Issue({ number, title, summary, user, created_at, commen
 }
 
 Issue.propTypes = {
-  issues: PropTypes.arrayOf(PropTypes.shape({
-    number: PropTypes.number.isRequired,
-    user: PropTypes.shape({
-      login: PropTypes.string,
-      avatar_url: PropTypes.string
-    }).isRequired,
-    state: PropTypes.string,
-    title: PropTypes.string,
-    created_at: PropTypes.string,
-    comments: PropTypes.number,
-    body: PropTypes.string,
-    labels: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number
-    }))
+  number: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    login: PropTypes.string,
+    avatar_url: PropTypes.string
+  }).isRequired,
+  state: PropTypes.string,
+  title: PropTypes.string,
+  created_at: PropTypes.string,
+  comments: PropTypes.number,
+  body: PropTypes.string,
+  labels: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number
   }))
 };

@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@iconify/react": "^1.1.3",
-    "iconify": "^1.3.0"
+    "iconify": "^1.3.0",
+    "prettier": "2.2.1"
   }
 }

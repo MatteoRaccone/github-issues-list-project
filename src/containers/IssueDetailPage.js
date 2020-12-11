@@ -11,13 +11,13 @@ import IssueLabels from '../components/IssueLabels'
 
 function Comment({ comment }) {
   return (
-    <div class="row">
+    <div className="row">
       <div className="col-1 text-center">
         <UserWithAvatar user={comment.user} orientation="horizontal"/>
       </div>
       <div className="col-12 col-md-11 mb-4 mb-md-0">
         <div className="issue-summary-header container">
-          <div class="row">
+          <div className="row">
             <span className="author col-9">{comment.user.login}
             <span className="ml-2 date-comment">commented on {comment.created_at}</span>
             </span>
@@ -90,12 +90,11 @@ class IssueDetails extends Component {
         <div className="issue-detail-meta">
           <IssueState issue={issue}/><span>{issue.comments} comments</span>
         </div>
-        <hr className="divider-short"/>
-        <div className="flex-column flex-md-row d-flex">
+        <div className="row">
         <div className="col-1 text-center">
         <UserWithAvatar user={issue.user} orientation="horizontal"/>
         </div>
-          <div className="col-12 col-md-9 mb-4 mb-md-0">
+          <div className="col-12 col-md-8 mb-4 mb-md-0">
             <div className="issue-summary-header container">
               <span className="author">{issue.user.login}</span>
               <span className="ml-2 date-comment">commented on {issue.created_at}</span>
@@ -111,24 +110,19 @@ class IssueDetails extends Component {
           <div className="col-3">
             <div className="issue-right-panel">
               <p>Assignees</p>
-              <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
               <p>Labels</p>
               <IssueLabels labels={issue.labels}/>
-              <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
               <p>Projects</p>
-              <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
               <p>Milestone</p>
-              <hr className="divider-short"/>
             </div>
             <div className="issue-right-panel">
               <p>Linked pull requests</p>
-              <hr className="divider-short"/>
             </div>
           </div>
         </div>

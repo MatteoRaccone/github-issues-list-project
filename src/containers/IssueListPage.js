@@ -51,7 +51,12 @@ export class IssueListPage extends Component {
           </div>
         </div>
         <div>
-        {isLoading ? <ReactSpinner type="border" color="primary" size="5"/> : <IssueList issues={issues}/>}
+        {isLoading ? (
+          <div className= "justify-content-center d-flex mt-3">
+            <ReactSpinner type="border" color="primary" size="5"/>
+          </div>
+        )
+         : <IssueList issues={issues}/>}
         <div className="issues-pagination">
         <Paginate
           pageCount={pageCount}
