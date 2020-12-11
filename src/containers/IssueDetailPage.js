@@ -70,6 +70,8 @@ class IssueDetails extends Component {
   componentDidMount() {
     if(!this.props.issue) {
       this.props.getIssue();
+    } else {
+      this.props.getComments(this.props.issue);
     }
   }
 
@@ -81,7 +83,7 @@ class IssueDetails extends Component {
   
 
   renderContent() {
-    const {issue, comments, labels} = this.props;
+    const {issue, comments} = this.props;
 
     return (
       <>
@@ -115,20 +117,14 @@ class IssueDetails extends Component {
           </div>
           <div className="col-3">
             <div className="issue-right-panel">
-              <p>Assignees</p>
-            </div>
-            <div className="issue-right-panel">
               <p>Labels</p>
               <IssueLabels labels={issue.labels}/>
             </div>
             <div className="issue-right-panel">
-              <p>Projects</p>
-            </div>
-            <div className="issue-right-panel">
               <p>Milestone</p>
-            </div>
-            <div className="issue-right-panel">
-              <p>Linked pull requests</p>
+              <p>{issue.milestone === 'null'
+            ? <div>No milestone</div>
+            : <span className="association text-lowercase">{issue.milestone}</span>}</p>
             </div>
           </div>
         </div>
@@ -167,12 +163,13 @@ IssueDetails.propTypes = {
     })
   }),
   issue: PropTypes.object,
+  milestone: PropTypes.string,
   comments: PropTypes.array,
   labels: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     color: PropTypes.string
-  })).isRequired
+  }))
 }
 
 const mapState = ({ issues, issueComments }, ownProps) => {
