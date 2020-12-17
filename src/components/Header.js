@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from "react";
 import { Navbar, Nav, Form, FormControl} from 'react-bootstrap';
 import Octicon, { markGithub } from 'octicons-react';
 
-class Header extends Component {
-  render() {
+const Header = () => {
     return(
     <Navbar className="header-nav">
     <Octicon className="header-icon" icon={markGithub} />
@@ -17,9 +16,7 @@ class Header extends Component {
       <Nav.Link href="#pricing" className= "header-nav">Explore</Nav.Link>
     </Nav>
     </Navbar>
-    
-      );
-    }
+    );
   }
   
   export default Header;
