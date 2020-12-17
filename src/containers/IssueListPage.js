@@ -3,7 +3,7 @@ import ReactSpinner from 'react-bootstrap-spinner';
 import { connect } from 'react-redux';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import { Breadcrumb} from 'react-bootstrap';
+import { Breadcrumb, Button} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
 import { getIssues, getRepoDetails } from '../redux/actions';
 import Octicon, { issueOpened } from 'octicons-react';
@@ -42,6 +42,9 @@ export class IssueListPage extends Component {
           <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
           <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
         </Breadcrumb>
+        <div className="container d-flex mt-3 mb-3 px-0">
+          <Button variant="success" className="ml-auto">New issue</Button>{' '}
+        </div>
         <div className="box-header container">
           <div className="m-0 pb-3 pt-3 px-0">
             <span className="opened">
