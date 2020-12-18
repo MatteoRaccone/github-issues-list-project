@@ -1,5 +1,6 @@
 import axios from 'axios';
 import parseLink from 'parse-link-header';
+import repoInit from "../../repoInit";
 
 const isLastPage = (pageLinks) => {
   return Object.keys(pageLinks).length === 2 &&
@@ -16,8 +17,8 @@ const getPageCount = (pageLinks) => {
   }
 }
 
-export function getIssues(org, repo, page = 1) {
-  const url = `https://api.github.com/repos/${org}/${repo}/issues?per_page=25&page=${page}`;
+export function getIssues(page = 1) {
+  const url = `${repoInit.baseUrl}/repos/${repoInit.org}/${repoInit.repo}/issues?per_page=25&page=${page}`;
   return axios.get(url)
     .then(res => {
       const pageLinks = parseLink(res.headers.link);
@@ -38,8 +39,8 @@ export function getIssues(org, repo, page = 1) {
     });
 }
 
-export function getRepoDetails(org, repo) {
-  const url = `https://api.github.com/repos/${org}/${repo}`;
+export function getRepoDetails() {
+  const url = `${repoInit.baseUrl}/repos/${repoInit.org}/${repoInit.repo}`;
   return axios.get(url)
     .then(res => {
       return res.data;
@@ -49,8 +50,8 @@ export function getRepoDetails(org, repo) {
     });
 }
 
-export function getIssue(org, repo, number) {
-  const url = `https://api.github.com/repos/${org}/${repo}/issues/${number}`;
+export function getIssue(number) {
+  const url = `${repoInit.baseUrl}/repos/${repoInit.org}/${repoInit.repo}/issues/${number}`;
   return axios.get(url)
     .then(res => res.data)
     .catch(err => Promise.reject({}));

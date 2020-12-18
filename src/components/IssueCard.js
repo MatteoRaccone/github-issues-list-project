@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Issue.css';
 import Octicon, { comment, issueOpened  } from 'octicons-react';
-import IssueLabels from '../components/IssueLabels'
+import IssueLabels from '../components/IssueLabels';
 
 function shorten(text = "", length = 140) {
   let cleanText = text.replace(/\\r\\n/g, "\\n");

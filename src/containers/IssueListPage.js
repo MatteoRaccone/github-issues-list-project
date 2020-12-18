@@ -3,12 +3,12 @@ import ReactSpinner from 'react-bootstrap-spinner';
 import { connect } from 'react-redux';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import { Breadcrumb, Button} from 'react-bootstrap';
+import { Breadcrumb} from 'react-bootstrap';
 import IssueList from '../components/IssueList';
 import { getIssues, getRepoDetails } from '../redux/actions';
-import Octicon, { issueOpened } from 'octicons-react';
-import rep from '../images/rep.png';
+import Octicon, { issueOpened, repoPull } from 'octicons-react';
 import { Link } from "react-router-dom";
+import repoInit from "../repoInit";
 
 export class IssueListPage extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export class IssueListPage extends Component {
     return (
       <>
         <Breadcrumb className ="sub-header">
-        <span><img src={rep} alt="rep" className="repo-icon"/></span>
+        <span><Octicon className="mr-1" icon={repoPull} /></span>
           <Breadcrumb.Item href="#">{org}</Breadcrumb.Item>
           <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
         </Breadcrumb>
@@ -84,8 +84,8 @@ IssueListPage.propTypes = {
 };
 
 IssueListPage.defaultProps = {
-  org: "facebook",
-  repo: "react"
+  org: repoInit.org,
+  repo: repoInit.repo
 };
 
 const selectIssues = issues => 

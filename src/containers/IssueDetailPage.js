@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { getIssue, getComments } from '../redux/actions';
 import { connect } from 'react-redux';
 import { Breadcrumb } from 'react-bootstrap';
-import Octicon, { issueOpened } from 'octicons-react';
-import rep from '../images/rep.png';
+import Octicon, { issueOpened, repo } from 'octicons-react';
 import './Comment.css';
 import UserWithAvatar from '../components/UserWithAvatar';
 import IssueLabels from '../components/IssueLabels';
@@ -88,9 +87,9 @@ class IssueDetails extends Component {
     return (
       <>
       <Breadcrumb className ="sub-header">
-        <span><img src={rep} alt="rep" className="repo-icon"/></span>
-          <Breadcrumb.Item href="#">Facebok</Breadcrumb.Item>
-          <Breadcrumb.Item active href="#">React</Breadcrumb.Item>
+        <span><Octicon className="mr-1" icon={repo} /></span>
+          <Breadcrumb.Item href="#">MatteoRaccone</Breadcrumb.Item>
+          <Breadcrumb.Item active href="#">github-issues-list-project</Breadcrumb.Item>
       </Breadcrumb>
       <div className="issue-detail container">
         <h1 className="issue-detail-title">{issue.title}
@@ -181,7 +180,7 @@ const mapState = ({ issues, issueComments }, ownProps) => {
 };
 
 const mapDispatch = (dispatch, ownProps) => ({
-  getIssue: () => dispatch(getIssue('facebook', 'react', ownProps.match.params.issueId)),
+  getIssue: () => dispatch(getIssue('MatteoRaccone', 'github-issues-list-project', ownProps.match.params.issueId)),
   getComments: (issue) => {
     return dispatch(getComments(issue));
   }

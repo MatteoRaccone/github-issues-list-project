@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { Switch, Route, BrowserRouter  } from 'react-router-dom';
 import rootReducer from './redux/reducers';
-import App from './containers/App';
 import IssueListPage from './containers/IssueListPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
