@@ -44,7 +44,7 @@ export class IssueListPage extends Component {
           <Breadcrumb.Item active href="#">{repo}</Breadcrumb.Item>
         </Breadcrumb>
         <div className="container d-flex mt-3 mb-3 px-0">
-        <Link className= "ml-auto new-issue-link" to= "/issue/IssueForm">Pull requests</Link>
+        <Link className= "ml-auto new-issue-link" to= "/issue/IssueForm">New issue</Link>
         </div>
         <div className="box-header container">
           <div className="m-0 pb-3 pt-3 px-0">
