@@ -3,7 +3,7 @@ import Octicon, { markGithub } from 'octicons-react';
 import { Navbar, Nav} from 'react-bootstrap';
 
 const Footer = () => (
-  <div className="footer container">
+  <div className="footer">
     <Navbar className="footer-nav border-top border-gray-light">
     <Octicon className="footer-icon mr-0" icon={markGithub} />
     <Nav className = "ml-sm-2 mr-0">© 2020 GitHub, Inc.</Nav>

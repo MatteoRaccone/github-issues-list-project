@@ -14,13 +14,13 @@ code {
 
 .footer{
   margin-top: 1rem;
-  padding: .5rem 1rem;
   background-color: white;
   bottom: 0;
   left: 0;
   width: 100%;
   font-size: 13px;
   border-top: black;
+  position: absolute;
 }
 
 .footer-nav {
