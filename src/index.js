@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { Switch, Route, BrowserRouter  } from 'react-router-dom';
@@ -13,7 +13,11 @@ import IssueDetails from './containers/IssueDetailPage';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-let store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+let store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
+
 
 const routes = (
   <BrowserRouter>

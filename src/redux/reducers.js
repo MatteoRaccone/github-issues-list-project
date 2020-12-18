@@ -50,6 +50,7 @@ export function issuesReducer(state = initialIssuesState, action) {
       };
     case GET_ISSUE_FAILURE:
     case GET_ISSUES_FAILURE:
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,

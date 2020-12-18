@@ -3,7 +3,7 @@ import parseLink from 'parse-link-header';
 import repoInit from "../../repoInit";
 
 const isLastPage = (pageLinks) => {
-  return Object.keys(pageLinks).length === 2 &&
+  return Object.keys(pageLinks).length > 0 &&
     pageLinks.first && pageLinks.prev;
 }
 
