@@ -3,17 +3,13 @@ import parseLink from 'parse-link-header';
 import repoInit from "../../repoInit";
 
 const isLastPage = (pageLinks) => {
-  return Object.keys(pageLinks).length > 0 &&
+  return Object.keys(pageLinks).length === 0 &&
     pageLinks.first && pageLinks.prev;
 }
 
 const getPageCount = (pageLinks) => {
-  if(isLastPage(pageLinks)) {
-    return parseInt(pageLinks.prev.page, 10) + 1;
-  } else if(pageLinks.last) {
-    return parseInt(pageLinks.last.page, 10)
-  } else {
-    return 0;
+  if(pageLinks == null) {
+    return null;
   }
 }
 
