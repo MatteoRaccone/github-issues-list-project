@@ -8,7 +8,7 @@ import rootReducer from './redux/reducers';
 import IssueListPage from './containers/IssueListPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import IssueForm from './components/IssueForm';
+import {IssueForm } from './components/IssueForm';
 import IssueDetails from './containers/IssueDetailPage';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';

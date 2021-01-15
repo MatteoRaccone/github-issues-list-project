@@ -8,9 +8,15 @@ const isLastPage = (pageLinks) => {
 }
 
 const getPageCount = (pageLinks) => {
+
   if(pageLinks == null) {
     return null;
   }
+  if(isLastPage(pageLinks)) {
+    return parseInt(pageLinks.prev.page, 10) + 1;
+  } else if(pageLinks.last) {
+    return parseInt(pageLinks.last.page, 10)
+  } 
 }
 
 export function getIssues(page = 1) {
